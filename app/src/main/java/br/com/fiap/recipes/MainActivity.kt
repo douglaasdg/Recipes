@@ -47,3 +47,125 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@Composable
+fun InitialScreen(){
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+    ){
+        Card(
+            modifier = Modifier
+                .width(160.dp)
+                .height(85.dp)
+                .align(Alignment.TopEnd),
+            shape = RoundedCornerShape(
+                bottomStart = 85.dp
+            ),
+            colors = CardDefaults
+                .cardColors(
+                    containerColor = Color(0xFFED1459)
+                )
+        ) {}
+        Column(
+            modifier = Modifier
+                .padding(16.dp)
+                .fillMaxWidth()
+                .align(Alignment.Center),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Image(
+                painter = painterResource(R.drawable.cooking),
+                contentDescription = "Imagem de uma mulher cozinhando.",
+                modifier = Modifier
+                    .size(190.dp)
+
+            )
+            Spacer(modifier = Modifier.height(100.dp))
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+            ) {
+                Text(
+                    text = "UNLIMITED PREMIUM RECIPES",
+                    fontSize = 16.sp,
+                    color = Color(0xFF868080),
+                    fontWeight = FontWeight.Bold
+                )
+                Text(
+                    text = "Start Cooking",
+                    fontSize = 64.sp,
+                    lineHeight = 64.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color(0xFFED1459),
+                    modifier = Modifier
+                        .padding(top = 8.dp, bottom = 16.dp)
+                )
+                Row {
+                    Button(
+                        onClick = {},
+                        colors = ButtonDefaults
+                            .buttonColors(
+                                containerColor = Color(0xFFED1459)
+                            ),
+                        border = BorderStroke(
+                            width = 1.dp,
+                            color = Color(0xFFFFC107)
+                        ),
+                        modifier = Modifier
+                            .size(width = 128.dp, height = 48.dp)
+                    ) {
+                        Text(
+                            text = "Login",
+                            color = Color(0xFFFFFFFF),
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Button(
+                        onClick = {},
+                        colors = ButtonDefaults
+                            .buttonColors(
+                                containerColor = Color(0xFFFFC107)
+                            ),
+                        border = BorderStroke(
+                            width = 1.dp,
+                            color = Color(0xFFED1459)
+                        ),
+                        modifier = Modifier
+                            .width(128.dp)
+                            .height(48.dp)
+                    ) {
+                        Text(
+                            text = "Sign up",
+                            color = Color(0xFFED1459),
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+                }
+            }
+        }
+        Card(
+            modifier = Modifier
+                .width(160.dp)
+                .height(85.dp)
+                .align(Alignment.BottomStart),
+            shape = RoundedCornerShape(
+                topEnd = 85.dp
+            ),
+            colors = CardDefaults
+                .cardColors(
+                    containerColor = Color(0xFFED1459)
+                )
+        ) {}
+    }
+}
+
+@Composable
+@Preview(showBackground = true, showSystemUi = true)
+fun InitialScreenPreview(){
+    RecipesTheme {
+        InitialScreen()
+    }
+}
