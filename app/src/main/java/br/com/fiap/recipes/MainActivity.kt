@@ -31,6 +31,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -92,18 +93,13 @@ fun InitialScreen(){
                     .fillMaxWidth()
             ) {
                 Text(
-                    text = "UNLIMITED PREMIUM RECIPES",
-                    fontSize = 16.sp,
+                    text = stringResource(R.string.unlimited_recipes),
                     color = MaterialTheme.colorScheme.secondary,
-                    fontFamily = poppinsFamily,
-                    fontWeight = FontWeight.Bold
+                    style = MaterialTheme.typography.titleSmall
                 )
                 Text(
-                    text = "Start Cooking",
-                    fontSize = 64.sp,
-                    lineHeight = 64.sp,
-                    fontFamily = poppinsFamily,
-                    fontWeight = FontWeight.Bold,
+                    text = stringResource(R.string.app_title),
+                    style = MaterialTheme.typography.displayLarge,
                     color = MaterialTheme.colorScheme.primary,
                     modifier = Modifier
                         .padding(top = 8.dp, bottom = 16.dp)
@@ -123,10 +119,9 @@ fun InitialScreen(){
                             .size(width = 128.dp, height = 48.dp)
                     ) {
                         Text(
-                            text = "Login",
+                            text = stringResource(R.string.button_login),
                             color = MaterialTheme.colorScheme.onPrimary,
-                            fontSize = 16.sp,
-                            fontWeight = FontWeight.Bold
+                            style = MaterialTheme.typography.labelMedium
                         )
                     }
                     Spacer(modifier = Modifier.width(8.dp))
@@ -145,10 +140,9 @@ fun InitialScreen(){
                             .height(48.dp)
                     ) {
                         Text(
-                            text = "Sign up",
+                            text = stringResource(R.string.button_signup),
                             color = MaterialTheme.colorScheme.onTertiary,
-                            fontSize = 16.sp,
-                            fontWeight = FontWeight.Bold
+                            style = MaterialTheme.typography.labelMedium
                         )
                     }
                 }
