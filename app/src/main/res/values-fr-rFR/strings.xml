@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Recipes</string>
+    <string name="app_title">Cuisinez!</string>
+    <string name="unlimited_recipes">RECETTES PREMIUM ILLIMITÉES</string>
+    <string name="button_login">Connexion</string>
+    <string name="button_signup">Inscription</string>
+</resources>
