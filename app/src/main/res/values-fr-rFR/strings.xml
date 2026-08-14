@@ -19,4 +19,7 @@
     <string name="please_sign_in">Veuillez vous connecter pour continuer</string>
     <string name="sign_in">SE CONNECTER</string>
     <string name="don_t_have_an_account">Vous n\'avez pas de compte?</string>
+    <string name="home">Home</string>
+    <string name="favorites">Favoris</string>
+    <string name="profile">Profil</string>
 </resources>
