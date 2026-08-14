@@ -19,4 +19,7 @@
     <string name="please_sign_in">Por favor, inicie sesión para continuar</string>
     <string name="sign_in">INICIAR SESIÓN</string>
     <string name="don_t_have_an_account">¿No tienes una cuenta?</string>
+    <string name="home">Home</string>
+    <string name="favorites">Favoritos</string>
+    <string name="profile">Perfil</string>
 </resources>
