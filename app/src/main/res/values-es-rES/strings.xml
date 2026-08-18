@@ -22,4 +22,7 @@
     <string name="home">Home</string>
     <string name="favorites">Favoritos</string>
     <string name="profile">Perfil</string>
+    <string name="search_by_recipes">Buscar por recetas</string>
+    <string name="categories">Categorías</string>
+    <string name="newly_added_recipes">Recetas recién añadidas</string>
 </resources>

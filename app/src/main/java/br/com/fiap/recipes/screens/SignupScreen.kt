@@ -12,15 +12,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AddAPhoto
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
-import androidx.compose.material.icons.filled.Mail
-import androidx.compose.material.icons.filled.Password
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.RemoveRedEye
 import androidx.compose.material3.Button
@@ -29,22 +26,28 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import br.com.fiap.recipes.R
+import br.com.fiap.recipes.navigation.Destination
 import br.com.fiap.recipes.ui.theme.RecipesTheme
 
 @Composable
-fun SignupScreen(modifier: Modifier = Modifier) {
+fun SignupScreen(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -65,7 +68,7 @@ fun SignupScreen(modifier: Modifier = Modifier) {
             TitleComponent()
             Spacer(modifier = Modifier.height(48.dp))
             UserImage()
-            SignupUserForm()
+            SignupUserForm(navController)
         }
     }
 }
@@ -78,7 +81,7 @@ fun SignupScreen(modifier: Modifier = Modifier) {
 @Composable
 private fun SignupScreenPreview() {
     RecipesTheme {
-        SignupScreen()
+        SignupScreen(rememberNavController())
     }
 }
 
@@ -147,7 +150,20 @@ private fun UserImagePreview() {
 }
 
 @Composable
-fun SignupUserForm(modifier: Modifier = Modifier) {
+fun SignupUserForm(navController: NavController) {
+
+    var name by remember {
+        mutableStateOf("")
+    }
+
+    var email by remember {
+        mutableStateOf("")
+    }
+
+    var password by remember {
+        mutableStateOf("")
+    }
+
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -155,8 +171,10 @@ fun SignupUserForm(modifier: Modifier = Modifier) {
     ) {
         // Caixa de texto para nome de usuário
         OutlinedTextField(
-            value = "",
-            onValueChange = {},
+            value = name,
+            onValueChange = {nameValue ->
+                name = nameValue
+            },
             modifier = Modifier
                 .fillMaxWidth(),
             label = {
@@ -185,8 +203,10 @@ fun SignupUserForm(modifier: Modifier = Modifier) {
         )
         // Caixa de texto para o e-mail do usuário
         OutlinedTextField(
-            value = "",
-            onValueChange = {},
+            value = email,
+            onValueChange = {emailValue ->
+                email = emailValue
+            },
             modifier = Modifier
                 .fillMaxWidth(),
             label = {
@@ -215,8 +235,10 @@ fun SignupUserForm(modifier: Modifier = Modifier) {
         )
         // Caixa de texto para a senha do usuário
         OutlinedTextField(
-            value = "",
-            onValueChange = {},
+            value = password,
+            onValueChange = {passwordValue ->
+                password = passwordValue
+            },
             modifier = Modifier
                 .fillMaxWidth(),
             label = {
@@ -252,7 +274,11 @@ fun SignupUserForm(modifier: Modifier = Modifier) {
         )
         Spacer(modifier = Modifier.height(32.dp))
         Button(
-            onClick = {},
+            onClick = {
+                navController.navigate(
+                    Destination.LoginScreen.route
+                )
+            },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.dp),
@@ -273,6 +299,6 @@ fun SignupUserForm(modifier: Modifier = Modifier) {
 @Composable
 private fun SignupUserFormPreview() {
     RecipesTheme {
-        SignupUserForm()
+        SignupUserForm(rememberNavController())
     }
 }
