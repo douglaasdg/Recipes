@@ -6,23 +6,31 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -32,31 +40,42 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import br.com.fiap.recipes.R
 import br.com.fiap.recipes.ui.theme.RecipesTheme
 
 @Composable
-fun HomeScreen(modifier: Modifier = Modifier) {
+fun HomeScreen(navController: NavController, email: String?) {
     Surface(
         modifier = Modifier
             .fillMaxSize()
     ) {
         Scaffold(
-            topBar = {MyTopAppBar()},
+            topBar = {MyTopAppBar(email!!)},
             bottomBar = {MyBottomAppBar()},
-            floatingActionButton = {}
-        ){ paddingValues ->
-            Column(
-                modifier = Modifier
-                    .padding(paddingValues)
-            ) {
-
+            floatingActionButton = {
+                FloatingActionButton(
+                    onClick = {},
+                    shape = CircleShape,
+                    containerColor = MaterialTheme.colorScheme.primary
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Add,
+                        contentDescription = "Add button"
+                    )
+                }
             }
+        ){ paddingValues ->
+            ContentScreen(modifier = Modifier.padding(paddingValues))
         }
     }
 }
@@ -65,17 +84,17 @@ fun HomeScreen(modifier: Modifier = Modifier) {
 @Composable
 private fun HomeScreenPreview() {
     RecipesTheme{
-        HomeScreen()
+        HomeScreen(rememberNavController(), "")
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyTopAppBar(modifier: Modifier = Modifier) {
+fun MyTopAppBar(email: String) {
     TopAppBar(
         modifier = Modifier
-            .fillMaxWidth()
-            .height(60.dp),
+            .fillMaxWidth(),
+            //.height(60.dp),
         title = {
             Row(
                 modifier = Modifier
@@ -92,7 +111,7 @@ fun MyTopAppBar(modifier: Modifier = Modifier) {
                         fontWeight = FontWeight.Bold
                     )
                     Text(
-                        text = "Joao@email.com",
+                        text = email,
                         style = MaterialTheme.typography.displaySmall
                     )
                 }
@@ -126,7 +145,7 @@ fun MyTopAppBar(modifier: Modifier = Modifier) {
 @Composable
 private fun MyTopAppBarPreview() {
     RecipesTheme() {
-        MyTopAppBar()
+        MyTopAppBar("")
     }
 }
 
@@ -177,5 +196,84 @@ fun MyBottomAppBar(modifier: Modifier = Modifier) {
 private fun MyBottomAppBarPreview() {
     RecipesTheme() {
         MyBottomAppBar()
+    }
+}
+
+@Composable
+fun ContentScreen(modifier: Modifier = Modifier) {
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp)
+    ) {
+        OutlinedTextField(
+            value = "",
+            onValueChange = {},
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 8.dp),
+            shape = RoundedCornerShape(12.dp),
+            colors = OutlinedTextFieldDefaults
+                .colors(
+                    unfocusedBorderColor = Color.Transparent,
+                    unfocusedContainerColor = Color(0xfff5f5f5),
+                    //focusedContainerColor = Color.LightGray
+                ),
+            label = {
+                Text(
+                    text = stringResource(R.string.search_by_recipes),
+                    style = MaterialTheme.typography.labelSmall
+                )
+            },
+            trailingIcon = {
+                Icon(
+                    imageVector = Icons.Default.Search,
+                    contentDescription = stringResource(R.string.e_mail_icon)
+                )
+            },
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Email,
+                imeAction = ImeAction.Next
+            )
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+        Card(
+            modifier = Modifier
+                .padding(bottom = 16.dp)
+                .fillMaxWidth()
+                .height(116.dp)
+
+        ) {
+            Image(
+                painter = painterResource(R.drawable.cooking_card),
+                contentDescription = "Cooking",
+                modifier = Modifier
+                    .fillMaxWidth(),
+                contentScale = ContentScale.Crop
+            )
+        }
+        Text(
+            text = stringResource(R.string.categories),
+            style = MaterialTheme.typography.labelMedium,
+            color = MaterialTheme.colorScheme.primary
+        )
+        Spacer(modifier = Modifier.height(116.dp))
+        Text(
+            text = stringResource(R.string.newly_added_recipes),
+            style = MaterialTheme.typography.labelMedium,
+            color = MaterialTheme.colorScheme.primary
+        )
+
+    }
+}
+
+@Preview(
+    showBackground = true,
+    uiMode = Configuration.UI_MODE_NIGHT_NO
+)
+@Composable
+private fun ContentScreenPreview() {
+    RecipesTheme() {
+        ContentScreen()
     }
 }

@@ -22,4 +22,7 @@
     <string name="home">Home</string>
     <string name="favorites">Favorites</string>
     <string name="profile">Profile</string>
+    <string name="search_by_recipes">Search by recipes</string>
+    <string name="categories">Categories</string>
+    <string name="newly_added_recipes">Newly added recipes</string>
 </resources>
