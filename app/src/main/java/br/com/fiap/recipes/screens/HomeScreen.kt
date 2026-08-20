@@ -57,6 +57,7 @@ import androidx.navigation.compose.rememberNavController
 import br.com.fiap.recipes.R
 import br.com.fiap.recipes.components.CategoryItem
 import br.com.fiap.recipes.components.RecipeItem
+import br.com.fiap.recipes.navigation.Destination
 import br.com.fiap.recipes.repository.getAllCategories
 import br.com.fiap.recipes.repository.getAllRecipes
 import br.com.fiap.recipes.ui.theme.RecipesTheme
@@ -83,7 +84,10 @@ fun HomeScreen(navController: NavController, email: String?) {
                 }
             }
         ){ paddingValues ->
-            ContentScreen(modifier = Modifier.padding(paddingValues))
+            ContentScreen(
+                modifier = Modifier.padding(paddingValues),
+                navController = navController
+                )
         }
     }
 }
@@ -208,7 +212,11 @@ private fun MyBottomAppBarPreview() {
 }
 
 @Composable
-fun ContentScreen(modifier: Modifier = Modifier) {
+fun ContentScreen(
+    modifier: Modifier = Modifier,
+    navController: NavController
+
+) {
 
     // variável que vai armazenar a lista de categorias
     val categoies = getAllCategories()
@@ -280,7 +288,15 @@ fun ContentScreen(modifier: Modifier = Modifier) {
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             items(categoies){category ->
-                CategoryItem(category)
+                CategoryItem(
+                    category = category,
+                    onClick = {
+                    navController.navigate(
+                        route = Destination
+                            .CategoryRecipeScreen
+                            .createRoute(category.id)
+                    )
+                })
             }
         }
         Text(
@@ -314,6 +330,6 @@ fun ContentScreen(modifier: Modifier = Modifier) {
 @Composable
 private fun ContentScreenPreview() {
     RecipesTheme() {
-        ContentScreen()
+        ContentScreen(navController = rememberNavController())
     }
 }
