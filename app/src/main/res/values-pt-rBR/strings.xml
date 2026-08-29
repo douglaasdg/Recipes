@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Recipes</string>
+    <string name="app_title">Vamos Cozinhar</string>
+    <string name="unlimited_recipes">RECEITAS ESPECIAIS ILIMITADAS</string>
+    <string name="button_login">Entrar</string>
+    <string name="button_signup">Cadastrar</string>
+    <string name="sign_up">Cadastrar</string>
+    <string name="create_account">Criar uma nova conta</string>
+    <string name="user_image">Imagem do usuário</string>
+    <string name="add_camera_icon">Ícone de câmera</string>
+    <string name="your_name">Seu nome</string>
+    <string name="person_icon">Ícone de pessoa</string>
+    <string name="your_e_mail">Seu e-mail</string>
+    <string name="e_mail_icon">Ícone de e-mail</string>
+    <string name="your_password">Sua senha</string>
+    <string name="password_icon">ícone de senha</string>
+    <string name="eye_icon">Ícone de olho</string>
+    <string name="login">Entrar</string>
+    <string name="please_sign_in">Por favor, faça login para continuar</string>
+    <string name="sign_in">ENTRAR</string>
+    <string name="don_t_have_an_account">Não tem uma conta?</string>
+    <string name="home">Home</string>
+    <string name="favorites">Favoritos</string>
+    <string name="profile">Perfil</string>
+    <string name="search_by_recipes">Buscar por receitas</string>
+    <string name="categories">Categorías</string>
+    <string name="newly_added_recipes">Receitas recém-adicionadas</string>
+    <string name="error">Error</string>
+    <string name="name_must_have_at_least_3_characters">Name must have at least 3 characters</string>
+</resources>

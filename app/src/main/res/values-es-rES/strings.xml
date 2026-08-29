@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Recipes</string>
+    <string name="app_title">Empezar a cocinar</string>
+    <string name="unlimited_recipes">RECETAS PREMIUM ILIMITADAS</string>
+    <string name="button_login">Acceder</string>
+    <string name="button_signup">Registrarse</string>
+    <string name="sign_up">Registrarse</string>
+    <string name="create_account">Crear una cuenta nueva</string>
+    <string name="user_image">Imagen de usuario</string>
+    <string name="add_camera_icon">Icono de cámara</string>
+    <string name="your_name">Su nombre</string>
+    <string name="person_icon">Icono de persona</string>
+    <string name="your_e_mail">Tu correo electrónico</string>
+    <string name="e_mail_icon">Icono de correo electrónico</string>
+    <string name="your_password">Tu contraseña</string>
+    <string name="password_icon">icono de contraseña</string>
+    <string name="eye_icon">Icono de ojo</string>
+    <string name="login">Acceder</string>
+    <string name="please_sign_in">Por favor, inicie sesión para continuar</string>
+    <string name="sign_in">INICIAR SESIÓN</string>
+    <string name="don_t_have_an_account">¿No tienes una cuenta?</string>
+    <string name="home">Home</string>
+    <string name="favorites">Favoritos</string>
+    <string name="profile">Perfil</string>
+    <string name="search_by_recipes">Buscar por recetas</string>
+    <string name="categories">Categorías</string>
+    <string name="newly_added_recipes">Recetas recién añadidas</string>
+    <string name="error">Error</string>
+    <string name="name_must_have_at_least_3_characters">Name must have at least 3 characters</string>
+</resources>
