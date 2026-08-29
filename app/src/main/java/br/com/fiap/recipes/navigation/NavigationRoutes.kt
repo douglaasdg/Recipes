@@ -58,6 +58,5 @@ fun NavigationRoutes() {
             val categoryId = backStackEntry.arguments?.getInt("categoryId")
             CategoryRecipeScreen(categoryId, navController)
         }
-
     }
 }

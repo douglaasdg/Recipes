@@ -25,4 +25,6 @@
     <string name="search_by_recipes">Rechercher par recettes</string>
     <string name="categories">Catégories</string>
     <string name="newly_added_recipes">Recettes récemment ajoutées</string>
+    <string name="error">Error</string>
+    <string name="name_must_have_at_least_3_characters">Name must have at least 3 characters</string>
 </resources>
