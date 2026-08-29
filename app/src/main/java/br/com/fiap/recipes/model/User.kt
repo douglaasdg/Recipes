@@ -1,8 +1,0 @@
-package br.com.fiap.recipes.model
-
-data class User(
-    val id: Int = 0,
-    val name: String = "",
-    val email: String = "",
-    val password: String = ""
-)
